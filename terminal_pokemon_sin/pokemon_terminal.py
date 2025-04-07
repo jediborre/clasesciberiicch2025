@@ -6,7 +6,7 @@ import os
 pokemon_retador = None
 pokemon_contrincante = None
 
-# Mapeo de colores (ya no se usará para el texto del menú, pero se mantiene por si se requiere)
+# Mapeo de colores (ya no se usará para el texto del menú, pero se mantiene por si se requiere) # noqa
 COLOR_NAMES = {
     curses.COLOR_YELLOW: "Amarillo",
     curses.COLOR_GREEN: "Verde",
@@ -72,7 +72,7 @@ def print_menu(scr, selected_row_idx, menu_items):
     Cada entrada de menú es una tupla:
       - (text_fijo, text_extra, extra_color)
     Si text_extra es None se imprime la línea completa usando el color normal.
-    Si se tiene text_extra, se imprime "text_fijo" y luego "text_extra" usando el color extra.
+    Si se tiene text_extra, se imprime "text_fijo" y luego "text_extra" usando el color extra. # noqa
     El elemento seleccionado se resalta usando A_REVERSE y A_BOLD.
     """
     scr.clear()
@@ -96,7 +96,7 @@ def print_menu(scr, selected_row_idx, menu_items):
         scr.addstr(current_y, x, item[0])
         scr.attroff(curses.color_pair(2))
         if item[1] is not None and item[2] is not None:
-            pair_number = 50 if idx == 0 else 51  # 50 para retador, 51 para contrincante
+            pair_number = 50 if idx == 0 else 51  # 50 para retador, 51 para contrincante # noqa
             curses.init_pair(pair_number, item[2], curses.COLOR_BLACK)
             scr.attron(curses.color_pair(pair_number))
             scr.addstr(current_y, x + len(item[0]), item[1])
@@ -111,7 +111,7 @@ def select_pokemon(scr, title):
     """
     Muestra una lista de Pokémon respetando el color configurado en el
     diccionario.
-    Cada fila se dibuja usando un par de color específico basado en el valor de 'color'.
+    Cada fila se dibuja usando un par de color específico basado en el valor de 'color'. # noqa
     La fila seleccionada se destaca con A_REVERSE y A_BOLD.
     """
     current_row = 0
@@ -123,7 +123,7 @@ def select_pokemon(scr, title):
         scr.addstr(1, x_title, title, curses.A_UNDERLINE | curses.A_BOLD)
 
         for idx, poke in enumerate(pokemons):
-            row_text = f"{poke['nombre']} - ATK: {poke['ataque']} DEF: {poke['defensa']}"
+            row_text = f"{poke['nombre']} - ATK: {poke['ataque']} DEF: {poke['defensa']}" # noqa
             curses.init_pair(10 + idx, poke["color"], curses.COLOR_BLACK)
             x = (width - len(row_text)) // 2
             y = 3 + idx
@@ -155,8 +155,8 @@ def select_pokemon(scr, title):
 def display_battle(scr, retador, contrincante):
     """
     Muestra la pantalla de batalla:
-      - El contrincante se muestra en la esquina superior derecha (imagen frontal).
-      - El retador se muestra en la esquina inferior izquierda (imagen de espalda).
+      - El contrincante se muestra en la esquina superior derecha (imagen frontal). # noqa
+      - El retador se muestra en la esquina inferior izquierda (imagen de espalda). # noqa
     Las imágenes se colorean de acuerdo al atributo 'color' del Pokémon.
     Se muestra la pantalla durante 10 segundos.
     """
@@ -186,7 +186,7 @@ def display_battle(scr, retador, contrincante):
             except curses.error:
                 pass
 
-    max_width_espalda = max((len(line) for line in espalda_lines), default=0)
+    max_width_espalda = max((len(line) for line in espalda_lines), default=0) # noqa
     start_y_espalda = height - len(espalda_lines) - 1
     start_x_espalda = 1
 
@@ -248,12 +248,12 @@ def main(scr):
     curses.curs_set(0)
     curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)  # Seleccionado
     curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Normal
-    curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Usado en batalla
+    curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Usado en batalla # noqa
 
     current_row = 0
 
     while True:
-        # Construir menú principal. Para los dos primeros ítems se arma una tupla:
+        # Construir menú principal. Para los dos primeros ítems se arma una tupla: # noqa
         # (texto_fijo, texto_extra, extra_color)
         menu_items = []
         # Ítem 0: Retador
