@@ -13,7 +13,7 @@ es_falso = False
 
 # Tipo de dato lista (list)
 lista = []
-lista = [1, 2, 3, "cuatro", 5.6]
+lista = [1, 2, 3, "cuatro", 5.6, [], {}]
 
 # Tipo de dato tupla (tuple)
 trupla = ()
@@ -24,8 +24,22 @@ conjunto = {1, 2, 3, 4, 5, 5}
 
 # Tipo de dato diccionario (dict)
 diccionario = {}
-diccionario = {"nombre": "Juan", "edad": 30}
+diccionario = {
+    "nombre": "Juan",
+    "edad": 30,
+    "genero": "quimera",
+    "calificaciones": {
+        "matematicas": 10,
+        "cibernetica": 10
+    },
+    "calificaciones1": [
+        ["matematicas", 10],
+        ["cibernetica", 9]
+    ]
+
+}
 alumno = {"nombre": "Fernando", "edad": 38}
+
 
 # Tipo de dato None (NoneType)
 nada = None
